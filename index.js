@@ -53,3 +53,59 @@ console.log(divAreaList);
 for (let i = 0; i < divAreaList.length; i++){
     console.log(divAreaList[i])
 }
+
+/* -------- 20.4 Updating the DOM --------- */
+
+// Changing the text using innerText and innerHTML
+const descriptions = document.querySelectorAll(".description-display");
+
+for (let desc of descriptions.values()){
+    let content = desc.innerText;
+
+    if (content.length > 250){
+        content = content.slice(0, 250);
+        // content += "...";    ---> string change to be used with desc.innerText
+        content += '<a href="#">...</a>' // string change to be used with desc.innerHTML
+    }
+
+    console.log("CONTENT: ", content);
+
+    desc.innerHTML = content;
+}
+
+// changing the style of elements
+const ratings = document.querySelectorAll(".rating-display .value");
+
+for (let rating of ratings) {
+    let ratingValue = parseFloat(rating.innerText);
+    if (ratingValue > 4.7) {
+        // CHANGE USING `STYLE` PROPERTY
+        // rating.style.fontWeight = "bold"
+        // rating.style.color = "#3ba17c";
+
+        // CHANGE USING `CLASSLIST` PROPERTY + ADDING CSS CLASS
+        rating.classList.add("high-rating");
+        rating.classList.remove("value");
+
+    }
+}
+
+// creating DOM elements, number of parks example
+const parks = document.querySelectorAll(".park-display"); // get all the parks
+const numberParks = parks.length; // count total parks
+const newElement = document.createElement("div"); // create new element
+newElement.innerText = `${numberParks} exciting parks to visit`; // add text to new element
+newElement.classList.add("header-statement"); // add new class
+
+const header = document.querySelector("header"); // select header, assign to variable
+header.appendChild(newElement); // add new element to header
+
+// removing DOM elements
+// Get the parent element of all parks
+const main = document.querySelector("main");
+
+// Select a single park
+const park = main.querySelector(".park-display");
+
+// Remove that park
+main.removeChild(park);
