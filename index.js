@@ -7,15 +7,6 @@ const submitHandler = (event) => {
     event.preventDefault();
     console.log("The form was submitted.")
 
-    // One way to get the name input
-    const parkName = document.querySelector("#name-input").value;
-    console.log("input style: ", parkName);
-
-    // Or you can use FormData object
-    const formData = new FormData(event.target);
-    const name = formData.get("name");
-    console.log("formData style: ", name);
-
     // CODE BLOCK USED WITH VALIDATION
     const form = event.target;
     const formDataVal = new FormData(form);
