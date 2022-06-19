@@ -9,9 +9,9 @@ const submitHandler = (event) => {
 
     // CODE BLOCK USED WITH VALIDATION
     const form = event.target;
-    const formDataVal = new FormData(form);
+    const formData = new FormData(form);
 
-    const errors = validateForm(formDataVal);
+    const errors = validateForm(formData);
 
     // Clear all previous errors
     const errorElements = document.querySelectorAll(".error");
