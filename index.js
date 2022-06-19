@@ -1,6 +1,7 @@
 /* ---- 20.6 Form Submissions ---- */ 
 
 // NB! This code is on a branch, which also means the live server is showing the branch version of the code!
+    // By pushing the updated code to github, you now see a pull request. Don't bite! The pull request will change your main branch, which has lessons 20.2-20.5
 
 const submitHandler = (event) => {
     event.preventDefault();
