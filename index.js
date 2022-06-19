@@ -108,4 +108,85 @@ const main = document.querySelector("main");
 const park = main.querySelector(".park-display");
 
 // Remove that park
-main.removeChild(park);
+// main.removeChild(park); 
+// ^^if you comment this out, the child will reappear
+
+
+/* ---- 20.5 Event listeners ---- */ 
+
+// add event listener to button
+const firstBtn = document.querySelector("button");
+firstBtn.addEventListener("click", (event) => {
+    console.log("You clicked the button", event);
+    console.log("event.target tells you what element was used", event.target)
+  });
+
+  // if you wanna add event listener to all buttons:
+  const allButtons = document.querySelectorAll("button");
+  allButtons.forEach((btn)=>{
+    btn.addEventListener("click", (event) => {
+        console.log("event listener for each button, using a loop", event.target)
+    })
+  })
+
+  // pulling the parent element using a listener
+  allButtons.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      console.log("parent element", event.target.parentNode);
+
+        //you can also adjust parent element within this listener loop
+        const park = event.target.parentNode;
+        park.style.backgroundColor = "#c8e6c9";
+    });
+  });
+
+// USING A SORTER | COMPLETE EXAMPLE 20.5
+  // Select the `nameSorter` link
+const nameSorter = document.querySelector("#name-sorter");
+
+// Add an event listener
+nameSorter.addEventListener("click", (event) => {
+    event.preventDefault(); // stops page from simply reloading after click 
+    console.log("You clicked the name sorter");
+
+    // 1.  Get the main element
+    const main = document.querySelector("main");
+
+    // 2. Get the list of parks
+    const parksList = main.querySelectorAll(".park-display");
+
+     // 3. Empty the main element. If you stop here, parks will disappear from DOM, but are stored in parksList
+    main.innerHTML = "";
+
+    // 4. Create an array
+    const parksArray = Array.from(parksList);
+
+    // 5. Sort the array. DOM is still empty at this point. We need to append list back into <main> element.
+    parksArray.sort((parkA, parkB) => {
+        const parkAName = parkA.querySelector("h2").innerText;
+        const parkBName = parkB.querySelector("h2").innerText;
+        if (parkAName < parkBName) {
+        return -1;
+        } else if (parkAName > parkBName) {
+        return 1;
+        } else {
+        return 0;
+        }
+    });
+
+    // ^^ This step could be created as a helper function and inserted, to help create more readable code.
+
+    // 6. Insert each park into the DOM. Now it sorts!
+    parksArray.forEach((park) => {
+        main.appendChild(park);
+    });
+});
+
+// Using DOMContentLoaded event handler
+console.log("Before!");
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("Loaded!");
+});
+
+console.log("After!");

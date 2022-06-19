@@ -43,7 +43,15 @@ main {
   font-size: 1.2rem;
 }
 
-/* End of changes made in lesson */
+/* 20.5 Changes */
+
+.sorter {
+  width: 90%;
+  margin: 0 auto;
+  padding: 6px;
+}
+
+/* End of changes made in lessons */
 
 .park-display {
   box-shadow: 0 0 3px 2px rgba(115, 66, 48, 0.2);
