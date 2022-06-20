@@ -115,6 +115,11 @@ const sortByRating = (parkA, parkB) => {
 // function for handling the nameSorter click
 const nameSorterClickHandler = (event) => {
   event.preventDefault();
+  
+    //* Block to be used with render()
+    parks.sort(sortByName);
+  
+    render();
 
 /** USE THIS BLOCK IF WORKING WITH DOM, NO RENDER
   // 1.  get the main element
@@ -137,11 +142,6 @@ const nameSorterClickHandler = (event) => {
     main.appendChild(park);
   });
   */
-
-  //* Block to be used with render()
-  parks.sort(sortByName);
-
-  render();
 };
 
 // function to handle the ratingSorter click
